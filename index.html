@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESTAURANTE DON XOXOGO</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="text-center" onload="mostrarGastos(); mostrarOrden()">
+
+    <!-- Navbar -->
+    <nav class="navbar" style="background-color: red;">
+        <div class="container-fluid">
+            <a class="navbar-brand mx-auto text-center text-white" href="#">RESTAURANTE DON XOXOGO</a>
+        </div>
+    </nav>
+
+    <!-- Menu Section -->
+    <div class="card text-center w-25 shadow p-3 mb-5" style="margin: 20px auto;" id="sec1">
+        <h2 class="mt-2 bg-danger text-white p-2">MENU</h2>
+
+        <!-- Add Menu Button -->
+        <button type="button" class="btn btn-info mb-3" data-bs-toggle="modal" data-bs-target="#comidaRes">
+            <i class="bi bi-plus-circle"></i> Agregar Comida
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="comidaRes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">AGREGAR COMIDA</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h3>Descripción</h3>
+                        <input type="text" id="descripcion" class="form-control mb-3" placeholder="Descripción de la comida">
+                        <h3>Costo</h3>
+                        <input type="number" id="costo" class="form-control mb-3" placeholder="Costo en $">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-success" onclick="guardarComida()">Agregar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="menu">
+            <!-- Aquí se mostrará el menú generado dinámicamente -->
+        </div>
+    </div>
+
+    <!-- Pedido Section -->
+    <div class="card text-center w-50 shadow p-3 mb-5" style="margin: 20px auto;" id="sec1">
+        <h2 class="mt-2 bg-danger text-white p-2">PEDIDO</h2>
+        <div id="orden">
+            <!-- Aquí se mostrará la orden generada dinámicamente -->
+        </div>
+        <hr>
+
+        <h4>Propina:</h4>
+        <select name="propina" id="propina" class="form-select text-center w-50 m-auto" onchange="calcularPropina()"
+            style="border-radius: 15px; border: 1px solid red;">
+            <option value="10">10%</option>
+            <option value="20">20%</option>
+            <option value="30">30%</option>
+        </select>
+        <hr>
+
+        <h1>Cuenta</h1>
+        <h4 style="text-align: left;" id="subtotal">Subtotal:</h4>
+        <h4 style="text-align: left;" id="propina1">Propina:</h4>
+        <h4 style="text-align: left;" id="total">Total:</h4>
+        <hr>
+
+        <!-- Botones -->
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-outline-danger w-25">Cancelar</button>
+            <button class="btn btn-outline-success w-25" onclick="aceptar()">Aceptar</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="bootstrap.bundle.min.js"></script>
+    <script src="sweetalert2.all.min.js"></script>
+</body>
+
+</html>
